@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.home.mgr.mappers.boardMapper">
+
+	<select id="selectBoardList" resultType="boardVO">
+		SELECT BOARD_NUM,
+		BOARD_TITLE, BOARD_CONTENTS
+		FROM MGR_BOARD
+	</select>
+
+	<insert id="write" useGeneratedKeys="true" keyProperty="id">
+		INSERT
+		INTO MGR_BOARD (BOARD_TITLE ,BOARD_CONTENTS)
+		VALUES (
+		#{boardTitle},
+		#{boardContents}
+		)
+	</insert>
+
+	<select id="selectBoardDetail" resultType="boardVO"
+		parameterType="string">
+		SELECT BOARD_NUM, BOARD_TITLE, BOARD_CONTENTS
+		FROM
+		MGR_BOARD
+		WHERE BOARD_NUM = #{boardNum}
+	</select>
+
+	<update id="update">
+		UPDATE MGR_BOARD
+		SET BOARD_TITLE = #{boardTitle} ,
+		BOARD_CONTENTS = #{boardContents}
+		WHERE BOARD_NUM = #{boardNum}
+	</update>
+
+	<delete id="delete">
+		DELETE
+		FROM MGR_BOARD
+		WHERE BOARD_NUM = #{boardNum}
+	</delete>
+
+	<select id="search" resultType="boardVO">
+		SELECT BOARD_NUM, BOARD_TITLE, BOARD_CONTENTS
+		FROM MGR_BOARD
+		WHERE
+		<if test="searchType == 'title'">
+			BOARD_TITLE LIKE '%' #{searchWord} '%'
+		</if>
+		<if test="searchType == 'contents'">
+			BOARD_CONTENTS LIKE '%' #{searchWord} '%'
+		</if>
+		<if test="searchType == 'all'">
+			BOARD_TITLE LIKE '%' #{searchWord} '%' OR
+			BOARD_CONTENTS
+			LIKE '%' #{searchWord} '%'
+		</if>
+	</select>
+
+
+
+
+
+
+	<!-- Paging 관련 Query -->
+
+	<!-- 총 게시글 수 -->
+	<select id="countBoardList" resultType="int">
+		SELECT COUNT(*)
+		FROM
+		MGR_BOARD
+	</select>
+
+	<!-- 페이징후 게시글 조회 -->
+	<select id="pagingBoardList" resultType="boardVO" parameterType="pagingVO">
+	
+		SELECT BOARD_NUM, BOARD_TITLE, BOARD_CONTENTS
+		FROM (
+			SELECT @ROWNUM:= @ROWNUM +1 RN, A.*
+			FROM (
+				SELECT *
+				FROM MGR_BOARD, (SELECT @ROWNUM := 0) R
+				ORDER BY BOARD_NUM DESC
+				) A
+			) B
+		WHERE RN BETWEEN #{start} AND #{end}
+		
+	</select>
+
+
+
+
+
+
+
+
+
+
+
+</mapper>

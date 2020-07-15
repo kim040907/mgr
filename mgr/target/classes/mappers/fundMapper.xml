@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.home.mgr.mappers.fundMapper">
+
+	<insert id="fundWrite" useGeneratedKeys="true" keyProperty="id">
+		INSERT
+		INTO MGR_FUND (FUND_CATEGORY, FUND_TITLE ,FUND_CONTENTS,
+		FUND_STARTDATE, FUND_ENDDATE, FUND_NEEDMONEY)
+		VALUES (
+		#{fundCategory},
+		#{fundTitle},
+		#{fundContents},
+		#{fundStartDate},
+		#{fundEndDate},
+		#{fundNeedMoney}
+		)
+	</insert>
+
+	<select id="selectFundList" resultType="fundVO">
+		SELECT FUND_NUM,
+		FUND_CATEGORY, FUND_TITLE, FUND_CONTENTS, FUND_STARTDATE, FUND_ENDDATE, FUND_NEEDMONEY
+		FROM MGR_FUND
+		ORDER BY FUND_NUM DESC
+	</select>
+
+	<select id="selectFundDetail" resultType="fundVO">
+		SELECT FUND_NUM,
+		FUND_CATEGORY, FUND_TITLE, FUND_CONTENTS, FUND_STARTDATE, FUND_ENDDATE, FUND_NEEDMONEY
+		FROM
+		MGR_FUND
+		WHERE FUND_NUM = #{fundNum}
+	</select>
+</mapper>
