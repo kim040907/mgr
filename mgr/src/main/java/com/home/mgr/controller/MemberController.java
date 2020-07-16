@@ -1,6 +1,11 @@
 package com.home.mgr.controller;
 
+import java.util.Enumeration;
+
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpSessionContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -46,7 +51,8 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(Model model, HttpServletRequest request, MemberVO memberVO, BoardVO boardVO) {
+	public String login(Model model, HttpServletRequest request, HttpSession session, MemberVO memberVO,
+			BoardVO boardVO) {
 
 		String checkPassword = request.getParameter("memberPassword");
 
@@ -56,14 +62,24 @@ public class MemberController {
 		if (memberVO.getMemberPassword().equals(checkPassword)) {
 			System.out.println("로그인 성공");
 
+			session.setAttribute("session", memberVO);
 			// List<BoardVO> boardList = boardService.selectBoardList();
 
 			// model.addAttribute("boardList", boardList);
 
-			return "boardList";
+			return "fundList";
 		} else {
 			System.out.println("비번 다름");
 			return "home";
 		}
+	}
+
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout(Model model, HttpServletRequest request, HttpSession session, MemberVO memberVO,
+			BoardVO boardVO) {
+
+		session.invalidate();
+		
+		return "fundList";
 	}
 }
