@@ -1,5 +1,4 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="false"%>
 <html>
 <head>
 <title>FUNDING</title>
@@ -7,6 +6,7 @@
 <body>
 <jsp:include page="header.jsp"></jsp:include>
 	<h1>FUNDING</h1>
+
 
 	<form action="/fund/searchFund" method="post">
 		<select name="searchType">
@@ -37,7 +37,7 @@
 				<td><c:out value="${list.fundContents}" /></td>
 				<td><c:out value="${list.fundStartDate}" /></td>
 				<td><c:out value="${list.fundEndDate}" /></td>
-				<td><c:out value="${list.fundNeedMoney}" /></td>
+				<td><c:out value="${list.fundNeedpoint}" /></td>
 			</tr>
 		</c:forEach>
 

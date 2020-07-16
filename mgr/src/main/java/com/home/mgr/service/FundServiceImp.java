@@ -32,4 +32,10 @@ public class FundServiceImp implements FundService {
 		return fundDAO.selectFundDetail(fundNum);
 	}
 
+	@Override
+	public void fundFundPoint(FundVO fundVO) {
+		// TODO Auto-generated method stub
+		fundDAO.fundFundPoint(fundVO);
+	}
+
 }

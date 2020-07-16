@@ -24,4 +24,10 @@ public class MemberDAOImp implements MemberDAO {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("selectMember", memberEmail);
 	}
+
+	@Override
+	public void memberFundPoint(MemberVO memberVO) {
+		// TODO Auto-generated method stub
+		sqlSession.update("memberFundPoint", memberVO);
+	}
 }

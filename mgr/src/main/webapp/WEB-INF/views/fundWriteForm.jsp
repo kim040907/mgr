@@ -1,5 +1,4 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
 <html>
 <head>
 	<title>Join</title>
@@ -17,7 +16,7 @@
 	CONTENTS : <input type="text" name="fundContents"></input>
 	STARTDATE : <input type="date" name="fundStartDate"></input>
 	ENDDATE : <input type="date" name="fundEndDate"></input>
-	NEEDMONEY : <input type="text" name="fundNeedMoney"></input>
+	NEEDMONEY : <input type="text" name="fundNeedpoint"></input>
 	
 <input type="submit" value="WRITE"></input>
 

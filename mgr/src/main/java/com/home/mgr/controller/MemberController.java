@@ -1,11 +1,7 @@
 package com.home.mgr.controller;
 
-import java.util.Enumeration;
-
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.servlet.http.HttpSessionContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.home.mgr.service.BoardService;
+import com.home.mgr.service.FundService;
 import com.home.mgr.service.MemberService;
 import com.home.mgr.vo.BoardVO;
 import com.home.mgr.vo.MemberVO;
@@ -27,6 +24,9 @@ public class MemberController {
 
 	@Autowired
 	BoardService boardService;
+
+	@Autowired
+	FundService fundService;
 
 	@RequestMapping(value = "/joinForm", method = RequestMethod.GET)
 	public String joinForm(Model model) {
@@ -56,19 +56,18 @@ public class MemberController {
 
 		String checkPassword = request.getParameter("memberPassword");
 
-		// TODO PASSWORD만 가져와도 될것같음
+		// 로그인시도 멤버정보 취득
 		memberVO = memberService.selectMember((String) request.getParameter("memberEmail"));
 
 		if (memberVO.getMemberPassword().equals(checkPassword)) {
-			System.out.println("로그인 성공");
 
+			// 로그인 멤버정보 세션등록
 			session.setAttribute("session", memberVO);
-			// List<BoardVO> boardList = boardService.selectBoardList();
 
-			// model.addAttribute("boardList", boardList);
-
+			model.addAttribute("fundList", fundService.selectFundList());
 			return "fundList";
 		} else {
+			// TODO 로그인 실패처리필요
 			System.out.println("비번 다름");
 			return "home";
 		}
@@ -79,7 +78,8 @@ public class MemberController {
 			BoardVO boardVO) {
 
 		session.invalidate();
-		
+		model.addAttribute("fundList", fundService.selectFundList());
+
 		return "fundList";
 	}
 }

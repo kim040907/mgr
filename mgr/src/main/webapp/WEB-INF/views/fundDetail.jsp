@@ -1,5 +1,4 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
 <html>
 <head>
 	<title>Login</title>
@@ -17,7 +16,7 @@ ${fundDetail.fundContents}
 ${fundDetail.fundStartDate} ~
 ${fundDetail.fundEndDate}
 
-${fundDetail.fundNeedMoney}
+${fundDetail.fundNeedpoint}
 
 <input type="button" onclick="location.href='/fund/list'" value="List"></input>
 
@@ -34,9 +33,15 @@ ${fundDetail.fundNeedMoney}
 
 
 
+<form action="/fund/fundPoint" method="post">
 
 
-<input type="button" onclick="location.href='/fund/funding'" value="FUNDING"></input>
+	<input type="hidden" name="fundNum" value="${fundDetail.fundNum}"></input>
+
+	<input type="text" placeholder="FUND MONEY" name="fundPoint"></input>
+	
+	<input type="submit" value="FUNDING"></input>
+</form>
 
 
 

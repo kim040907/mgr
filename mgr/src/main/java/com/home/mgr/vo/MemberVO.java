@@ -6,6 +6,7 @@ public class MemberVO {
 	private String memberEmail;
 	private String memberPassword;
 	private String memberName;
+	private int memberPoint;
 
 	public String getMemberNum() {
 		return memberNum;
@@ -37,5 +38,19 @@ public class MemberVO {
 
 	public void setMemberName(String memberName) {
 		this.memberName = memberName;
+	}
+
+	public int getMemberPoint() {
+		return memberPoint;
+	}
+
+	public void setMemberPoint(int memberPoint) {
+		this.memberPoint = memberPoint;
+	}
+
+	@Override
+	public String toString() {
+		return "MemberVO [memberNum=" + memberNum + ", memberEmail=" + memberEmail + ", memberPassword="
+				+ memberPassword + ", memberName=" + memberName + ", memberPoint=" + memberPoint + "]";
 	}
 }

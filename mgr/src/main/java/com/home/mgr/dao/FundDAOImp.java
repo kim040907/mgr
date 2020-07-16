@@ -33,4 +33,10 @@ public class FundDAOImp implements FundDAO {
 		return sqlSession.selectOne("selectFundDetail", fundNum);
 	}
 
+	@Override
+	public void fundFundPoint(FundVO fundVO) {
+		// TODO Auto-generated method stub
+		sqlSession.update("fundFundPoint", fundVO);
+	}
+
 }

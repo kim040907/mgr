@@ -23,4 +23,10 @@ public class MemberServiceImp implements MemberService {
 		// TODO Auto-generated method stub
 		return memberDAO.selectMember(memberEmail);
 	}
+
+	@Override
+	public void memberFundPoint(MemberVO memberVO) {
+		// TODO Auto-generated method stub
+		memberDAO.memberFundPoint(memberVO);
+	}
 }

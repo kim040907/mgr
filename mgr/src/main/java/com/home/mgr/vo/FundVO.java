@@ -8,7 +8,9 @@ public class FundVO {
 	private String fundContents;
 	private String fundStartDate;
 	private String fundEndDate;
-	private String fundNeedMoney;
+	// TODO 타입 관리필요
+	private String fundNeedpoint;
+	private int fundCurrentpoint;
 
 	public String getFundNum() {
 		return fundNum;
@@ -58,19 +60,27 @@ public class FundVO {
 		this.fundEndDate = fundEndDate;
 	}
 
-	public String getFundNeedMoney() {
-		return fundNeedMoney;
+	public String getFundNeedpoint() {
+		return fundNeedpoint;
 	}
 
-	public void setFundNeedMoney(String fundNeedMoney) {
-		this.fundNeedMoney = fundNeedMoney;
+	public void setFundNeedpoint(String fundNeedpoint) {
+		this.fundNeedpoint = fundNeedpoint;
+	}
+
+	public int getFundCurrentpoint() {
+		return fundCurrentpoint;
+	}
+
+	public void setFundCurrentpoint(int fundCurrentpoint) {
+		this.fundCurrentpoint = fundCurrentpoint;
 	}
 
 	@Override
 	public String toString() {
 		return "FundVO [fundNum=" + fundNum + ", fundCategory=" + fundCategory + ", fundTitle=" + fundTitle
 				+ ", fundContents=" + fundContents + ", fundStartDate=" + fundStartDate + ", fundEndDate=" + fundEndDate
-				+ ", fundNeedMoney=" + fundNeedMoney + "]";
+				+ ", fundNeedpoint=" + fundNeedpoint + ", fundCurrentpoint=" + fundCurrentpoint + "]";
 	}
 
 }
