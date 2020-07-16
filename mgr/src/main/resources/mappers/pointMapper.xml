@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.home.mgr.mappers.pointMapper">
+	<insert id="insertPointHistory" useGeneratedKeys="true" keyProperty="id">
+		INSERT
+		INTO MGR_POINT (POINT_TYPE, POINT_POINT,POINT_MEMBERNUM,
+		POINT_FUNDNUM, POINT_DATETIME)
+		VALUES (
+		#{pointType},
+		#{pointPoint},
+		#{pointMembernum},
+		#{pointFundnum},
+		NOW()
+		)
+	</insert>
+</mapper>
