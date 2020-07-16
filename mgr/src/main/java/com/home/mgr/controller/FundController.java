@@ -105,7 +105,7 @@ public class FundController {
 		 */
 		PointVO pointVO = new PointVO();
 
-		pointVO.setPointType("1");
+		pointVO.setPointType("2");
 		pointVO.setPointPoint(usePoint);
 		pointVO.setPointMembernum(memberVO.getMemberNum());
 		pointVO.setPointFundnum(fundVO.getFundNum());
