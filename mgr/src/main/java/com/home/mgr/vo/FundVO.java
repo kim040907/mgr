@@ -2,21 +2,20 @@ package com.home.mgr.vo;
 
 public class FundVO {
 
-	private String fundNum;
+	private int fundNum;
 	private String fundCategory;
 	private String fundTitle;
 	private String fundContents;
 	private String fundStartDate;
 	private String fundEndDate;
-	// TODO 타입 관리필요
-	private String fundNeedpoint;
+	private int fundNeedpoint;
 	private int fundCurrentpoint;
 
-	public String getFundNum() {
+	public int getFundNum() {
 		return fundNum;
 	}
 
-	public void setFundNum(String fundNum) {
+	public void setFundNum(int fundNum) {
 		this.fundNum = fundNum;
 	}
 
@@ -60,11 +59,11 @@ public class FundVO {
 		this.fundEndDate = fundEndDate;
 	}
 
-	public String getFundNeedpoint() {
+	public int getFundNeedpoint() {
 		return fundNeedpoint;
 	}
 
-	public void setFundNeedpoint(String fundNeedpoint) {
+	public void setFundNeedpoint(int fundNeedpoint) {
 		this.fundNeedpoint = fundNeedpoint;
 	}
 

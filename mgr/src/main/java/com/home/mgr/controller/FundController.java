@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.home.mgr.service.FundService;
 import com.home.mgr.service.MemberService;
+import com.home.mgr.service.PointService;
 import com.home.mgr.vo.FundVO;
 import com.home.mgr.vo.MemberVO;
+import com.home.mgr.vo.PointVO;
 
 @Controller
 @RequestMapping("/fund")
@@ -24,6 +26,9 @@ public class FundController {
 
 	@Autowired
 	MemberService memberService;
+
+	@Autowired
+	PointService pointService;
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String list(Model model, HttpServletRequest request, FundVO fundVO) {
@@ -46,7 +51,7 @@ public class FundController {
 		fundVO.setFundContents(request.getParameter("fundContents"));
 		fundVO.setFundStartDate(request.getParameter("fundStartDate"));
 		fundVO.setFundEndDate(request.getParameter("fundEndDate"));
-		fundVO.setFundNeedpoint(request.getParameter("fundNeedpoint"));
+		fundVO.setFundNeedpoint(Integer.parseInt(request.getParameter("fundNeedpoint")));
 
 		System.out.println("FUNDVO : " + fundVO.toString());
 
@@ -60,7 +65,7 @@ public class FundController {
 	@RequestMapping(value = "/fundDetail", method = RequestMethod.GET)
 	public String detail(Model model, HttpServletRequest request, FundVO fundVO) {
 
-		fundVO = fundService.selectFundDetail(request.getParameter("fundNum"));
+		fundVO = fundService.selectFundDetail(Integer.parseInt(request.getParameter("fundNum")));
 
 		model.addAttribute("fundDetail", fundVO);
 
@@ -94,10 +99,19 @@ public class FundController {
 		fundVO.setFundCurrentpoint(fundVO.getFundCurrentpoint() + usePoint);
 		// 펀드 포인트 추가
 		fundService.fundFundPoint(fundVO);
+		
+		/*
+		 *  포인트등록 내역
+		 */
+		PointVO pointVO = new PointVO();
 
-		// TODO 포인트 등록 히스토리 추가 필요
-		
-		
+		pointVO.setPointType("1");
+		pointVO.setPointPoint(usePoint);
+		pointVO.setPointMembernum(memberVO.getMemberNum());
+		pointVO.setPointFundnum(fundVO.getFundNum());
+
+		pointService.insertPointHistory(pointVO);
+
 		model.addAttribute("fundDetail", fundVO);
 
 		return "fundDetail";

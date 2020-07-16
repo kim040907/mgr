@@ -2,17 +2,17 @@ package com.home.mgr.vo;
 
 public class MemberVO {
 
-	private String memberNum;
+	private int memberNum;
 	private String memberEmail;
 	private String memberPassword;
 	private String memberName;
 	private int memberPoint;
 
-	public String getMemberNum() {
+	public int getMemberNum() {
 		return memberNum;
 	}
 
-	public void setMemberNum(String memberNum) {
+	public void setMemberNum(int memberNum) {
 		this.memberNum = memberNum;
 	}
 

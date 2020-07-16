@@ -28,7 +28,7 @@ public class FundDAOImp implements FundDAO {
 	}
 
 	@Override
-	public FundVO selectFundDetail(String fundNum) {
+	public FundVO selectFundDetail(int fundNum) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("selectFundDetail", fundNum);
 	}

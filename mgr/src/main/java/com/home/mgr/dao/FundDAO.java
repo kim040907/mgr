@@ -13,7 +13,7 @@ public interface FundDAO {
 	List<FundVO> selectFundList();
 
 	// 펀드상세페이지
-	FundVO selectFundDetail(String fundNum);
+	FundVO selectFundDetail(int fundNum);
 
 	// 펀드 포인트추가
 	void fundFundPoint(FundVO fundVO);

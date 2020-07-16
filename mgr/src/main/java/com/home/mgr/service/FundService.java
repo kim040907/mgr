@@ -13,7 +13,7 @@ public interface FundService {
 	List<FundVO> selectFundList();
 
 	// 펀드 상세페이지
-	FundVO selectFundDetail(String fundNum);
+	FundVO selectFundDetail(int fundNum);
 
 	// 펀드포인트 추가
 	void fundFundPoint(FundVO fundVO);
