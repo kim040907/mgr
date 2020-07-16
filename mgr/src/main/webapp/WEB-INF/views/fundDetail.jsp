@@ -17,6 +17,8 @@ ${fundDetail.fundStartDate} ~
 ${fundDetail.fundEndDate}
 
 ${fundDetail.fundNeedpoint}
+${fundDetail.fundCurrentpoint}
+${fundDetail.fundNeedpoint - fundDetail.fundCurrentpoint}
 
 <input type="button" onclick="location.href='/fund/list'" value="List"></input>
 

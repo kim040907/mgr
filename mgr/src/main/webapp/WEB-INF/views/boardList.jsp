@@ -1,12 +1,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="false"%>
 <html>
 <head>
 <title>FUNDING</title>
 </head>
 <body>
 <jsp:include page="header.jsp"></jsp:include>
-	<h1>FUNDING</h1>
+	<h1>${session}</h1>
 
 	<form action="/board/search" method="post">
 		<select name="searchType">
