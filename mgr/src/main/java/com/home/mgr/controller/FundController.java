@@ -3,7 +3,6 @@ package com.home.mgr.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.junit.jupiter.params.shadow.com.univocity.parsers.annotations.Parsed;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -104,7 +103,8 @@ public class FundController {
 		 *  포인트등록 내역
 		 */
 		PointVO pointVO = new PointVO();
-
+		
+		// 2 : 펀딩 포인트 내역
 		pointVO.setPointType("2");
 		pointVO.setPointPoint(usePoint);
 		pointVO.setPointMembernum(memberVO.getMemberNum());
