@@ -9,7 +9,7 @@
 	FUNDING WRITE
 </h1>
 
-<form action="/fund/fundWrite" method="post">
+<form action="/fund/fundWrite" method="post" enctype="multipart/form-data">
 
 	CATEGORY : <input type="text" name="fundCategory"></input>
 	TITLE : <input type="text" name="fundTitle"></input>
@@ -17,6 +17,7 @@
 	STARTDATE : <input type="date" name="fundStartDate"></input>
 	ENDDATE : <input type="date" name="fundEndDate"></input>
 	NEEDMONEY : <input type="text" name="fundNeedpoint"></input>
+	<!-- IMAGE : <input type="file" name="fundImage"></input> -->
 	
 <input type="submit" value="WRITE"></input>
 
