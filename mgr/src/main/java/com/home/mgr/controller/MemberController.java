@@ -65,7 +65,7 @@ public class MemberController {
 			session.setAttribute("session", memberVO);
 
 			model.addAttribute("fundList", fundService.selectFundList());
-			return "fundList";
+			return "home";
 		} else {
 			// TODO 로그인 실패처리필요
 			System.out.println("비번 다름");
